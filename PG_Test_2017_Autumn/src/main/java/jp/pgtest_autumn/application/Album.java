@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import jp.pgtest_autumn.bean.Photo;
 import jp.pgtest_autumn.constant.MessageConstant;
-import jp.pgtest_autumn.model.PhotoList;
+import jp.pgtest_autumn.model.PhotoListManager;
 
 /**
  * アルバムアプリクラス。
@@ -20,17 +20,17 @@ import jp.pgtest_autumn.model.PhotoList;
 public class Album extends ApplicationBase {
 
 	/** 写真リスト */
-	private PhotoList photoList;
+	private PhotoListManager photoListManager;
 
 	/**
 	 * コンストラクタ。
 	 * <p>
 	 * 引数に渡された写真リストをフィールド変数に格納する。<br>
 	 * </p>
-	 * @param photoList 写真リスト
+	 * @param photoListManager 写真リスト
 	 */
-	public Album(PhotoList photoList) {
-		this.photoList = photoList;
+	public Album(PhotoListManager photoListManager) {
+		this.photoListManager = photoListManager;
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class Album extends ApplicationBase {
 		messageList.add("------------------------------------");
 		messageList.add("撮影した写真(最新10枚)");
 
-		if (photoList.isEmpty()) {
+		if (photoListManager.isEmpty()) {
 			messageList.add("写真が撮影されていません。");
 			messageList.add("------------------------------------");
 			return messageList;
@@ -104,12 +104,12 @@ public class Album extends ApplicationBase {
 	 */
 	private List<Photo> fetchLatest10Photo() {
 
-		if (photoList.getPhotoList().size() == 0) {
-			return photoList.getPhotoList();
+		if (photoListManager.getPhotoList().size() == 0) {
+			return photoListManager.getPhotoList();
 		}
 
 //		/* Java7 */
-//		List<Photo> reverseList = new ArrayList<>(photoList.getPhotoList());
+//		List<Photo> reverseList = new ArrayList<>(photoListManager.getPhotoList());
 //		Collections.reverse(reverseList);
 //
 //		List<Photo> returnList = new ArrayList<>();
@@ -120,7 +120,7 @@ public class Album extends ApplicationBase {
 //		return returnList;
 
 		/* Java8 */
-		return photoList.getPhotoList()
+		return photoListManager.getPhotoList()
 						 .stream()
 						 .limit(10)
 						 .sorted((p1, p2) -> p2.getFileName().compareTo(p1.getFileName()))

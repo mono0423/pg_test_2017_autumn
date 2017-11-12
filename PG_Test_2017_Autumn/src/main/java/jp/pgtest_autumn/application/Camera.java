@@ -8,7 +8,7 @@ import java.util.List;
 
 import jp.pgtest_autumn.bean.Photo;
 import jp.pgtest_autumn.constant.MessageConstant;
-import jp.pgtest_autumn.model.PhotoList;
+import jp.pgtest_autumn.model.PhotoListManager;
 
 /**
  * カメラアプリクラス。
@@ -21,17 +21,17 @@ import jp.pgtest_autumn.model.PhotoList;
 public class Camera extends ApplicationBase {
 
 	/** 写真リスト */
-	private PhotoList photoList;
+	private PhotoListManager photoListManager;
 
 	/**
 	 * コンストラクタ。
 	 * <p>
 	 * 引数に渡された写真リストをフィールド変数に格納する。<br>
 	 * </p>
-	 * @param photoList 写真リスト
+	 * @param photoListManager 写真リスト
 	 */
-	public Camera(PhotoList photoList) {
-		this.photoList = photoList;
+	public Camera(PhotoListManager photoListManager) {
+		this.photoListManager = photoListManager;
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class Camera extends ApplicationBase {
 
 		String fileName = simpleDateFormat.format(calendar.getTime());
 		Photo photo = new Photo(fileName);
-		photoList.add(photo);
+		photoListManager.add(photo);
 
 		return photo;
 	}

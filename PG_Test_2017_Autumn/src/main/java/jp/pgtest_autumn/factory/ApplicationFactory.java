@@ -4,11 +4,11 @@ import jp.pgtest_autumn.application.Album;
 import jp.pgtest_autumn.application.ApplicationBase;
 import jp.pgtest_autumn.application.Camera;
 import jp.pgtest_autumn.application.Home;
-import jp.pgtest_autumn.model.PhotoList;
+import jp.pgtest_autumn.model.PhotoListManager;
 
 public class ApplicationFactory {
 
-	private static PhotoList photoList;
+	private static PhotoListManager photoListManager;
 
 	private static ApplicationBase home;
 
@@ -17,7 +17,7 @@ public class ApplicationFactory {
 	private static ApplicationBase camera;
 
 	static {
-		photoList = new PhotoList();
+		photoListManager = new PhotoListManager();
 	}
 
 	private ApplicationFactory() { }
@@ -30,11 +30,11 @@ public class ApplicationFactory {
 			return home;
 
 		case "camera":
-			camera = camera == null ? new Camera(photoList) : camera;
+			camera = camera == null ? new Camera(photoListManager) : camera;
 			return camera;
 
 		case "album":
-			album = album == null ? new Album(photoList) : album;
+			album = album == null ? new Album(photoListManager) : album;
 			return album;
 
 		default:

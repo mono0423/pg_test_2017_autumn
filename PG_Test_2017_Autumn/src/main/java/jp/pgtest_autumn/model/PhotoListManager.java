@@ -5,23 +5,23 @@ import java.util.List;
 
 import jp.pgtest_autumn.bean.Photo;
 
-public class PhotoList {
+public class PhotoListManager {
 
-	private List<Photo> photoList;
+	private List<Photo> photoListManager;
 
-	public PhotoList() {
-		photoList = new ArrayList<>();
+	public PhotoListManager() {
+		photoListManager = new ArrayList<>();
 	}
 
 	public void add(Photo photo) {
-		photoList.add(photo);
+		photoListManager.add(photo);
 	}
 
 	public List<Photo> getPhotoList() {
-		return photoList;
+		return photoListManager;
 	}
 
 	public boolean isEmpty() {
-		return photoList.isEmpty();
+		return photoListManager.isEmpty();
 	}
 }

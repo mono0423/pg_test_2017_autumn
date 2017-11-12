@@ -49,6 +49,7 @@ public class PhoneController {
 	 * </p>
 	 *
 	 * @param input 押下されたボタン名
+	 * @return メッセージリスト
 	 */
 	public List<String> exe(String input) {
 
@@ -96,7 +97,7 @@ public class PhoneController {
 	/**
 	 * 起動中アプリ取得メソッド。(修正不要)
 	 *
-	 * @return 起動中アプリ。
+	 * @return 起動中アプリ
 	 */
 	public ApplicationBase getCurrentApp() {
 		return currentApp;

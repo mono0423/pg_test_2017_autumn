@@ -141,4 +141,13 @@ public class Album extends ApplicationBase {
 											  "    home : HOMEボタン"));
 	}
 
+	/**
+	 * アプリ名取得メソッド。(修正不要)
+	 *
+	 * @return アプリ名
+	 */
+	@Override
+	public String fetchApplicationName() {
+		return "アルバム";
+	}
 }

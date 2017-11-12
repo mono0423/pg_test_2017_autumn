@@ -18,4 +18,7 @@ public class MessageConstant {
 
 	/** ボタン名不正メッセージ */
 	public static final String ILLAGAL_BUTTON_MSG = "ボタン名に不正な値が渡されています。";
+
+	/** アプリ切り替え不正メッセージ */
+	public static final String ILLAGAL_APP_CHANGE_MSG = "ホームアプリ起動中でないと他アプリへの切り替えはできません。";
 }

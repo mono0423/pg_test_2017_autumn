@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import jp.pgtest_autumn.application.ApplicationBase;
+import jp.pgtest_autumn.application.Home;
 import jp.pgtest_autumn.constant.ButtonNameConstant;
 import jp.pgtest_autumn.constant.MessageConstant;
 import jp.pgtest_autumn.factory.ApplicationFactory;
@@ -36,7 +37,7 @@ public class PhoneController {
 		List<String> messageList = currentApp.launch();
 		messageList.addAll(currentApp.display());
 		for (String message : messageList) {
-			System.out.println("【アプリ    】" + message);
+			System.out.println("【" + currentApp.fetchApplicationName() + "】" + message);
 		}
 	}
 
@@ -49,14 +50,19 @@ public class PhoneController {
 	 *
 	 * @param input 押下されたボタン名
 	 */
-	public void exe(String input) {
+	public List<String> exe(String input) {
 
 		List<String> messageList;
 
+		/* ホームアプリ以外からのアプリ切り替え防止 */
+		if (!(currentApp instanceof Home)
+				&& (ButtonNameConstant.CAMERA.equals(input) || ButtonNameConstant.ALBUM.equals(input))) {
+			messageList = new ArrayList<>(Arrays.asList(MessageConstant.ILLAGAL_APP_CHANGE_MSG));
+
 		/* アプリ切り替え時 */
-		if (ButtonNameConstant.HOME.equals(input)
-				|| ButtonNameConstant.CAMERA.equals(input)
-				|| ButtonNameConstant.ALBUM.equals(input)) {
+		} else 	if (ButtonNameConstant.HOME.equals(input)
+						|| ButtonNameConstant.CAMERA.equals(input)
+						|| ButtonNameConstant.ALBUM.equals(input)) {
 
 			/* ボタン時応じたアプリを起動する */
 			currentApp = ApplicationFactory.getInstance(input);
@@ -78,11 +84,13 @@ public class PhoneController {
 
 		/* メッセージを出力する */
 		for (String message : messageList) {
-			System.out.println("【アプリ    】" + message);
+			System.out.println("【" + currentApp.fetchApplicationName() + "】" + message);
 		}
 		for (String message : currentApp.display()) {
-			System.out.println("【アプリ    】" + message);
+			System.out.println("【" + currentApp.fetchApplicationName() + "】" + message);
 		}
+
+		return messageList;
 	}
 
 	/**

@@ -43,4 +43,14 @@ public abstract class ApplicationBase {
 	 * @return メッセージ
 	 */
 	public abstract List<String> display();
+
+	/**
+	 * アプリ名取得メソッド。
+	 * <p>
+	 * 具体的な処理はサブクラスでオーバーライドし定義する。
+	 * </p>
+	 *
+	 * @return メッセージ
+	 */
+	public abstract String fetchApplicationName();
 }

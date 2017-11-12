@@ -60,11 +60,20 @@ public class Home extends ApplicationBase {
 	public List<String> display() {
 		return new ArrayList<String>(Arrays.asList("ホームアプリが起動中です。",
 											  "以下のボタン名を入力してください。",
-											  "    camera : 音量UPボタン",
-											  "    album  : 音量UPボタン",
+											  "    camera : カメラアプリ",
+											  "    album  : アルバムアプリ",
 											  "    up     : 音量UPボタン",
 											  "    down   : 音量DOWNボタン",
 											  "    home   : HOMEボタン"));
 	}
 
+	/**
+	 * アプリ名取得メソッド。(修正不要)
+	 *
+	 * @return アプリ名
+	 */
+	@Override
+	public String fetchApplicationName() {
+		return "ホーム  ";
+	}
 }

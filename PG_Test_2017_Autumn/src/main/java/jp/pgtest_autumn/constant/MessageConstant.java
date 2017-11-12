@@ -22,6 +22,6 @@ public class MessageConstant {
 	/** アプリ切り替え不正メッセージ */
 	public static final String ILLAGAL_APP_CHANGE_MSG = "ホームアプリ起動中でないと他アプリへの切り替えはできません。";
 
-	/**  */
+	/** アプリ名不正メッセージ */
 	public static final String ILLAGAL_APP_NAME_MSG = "引数にホーム・カメラ・アルバム以外のアプリ名が渡されています。";
 }

@@ -6,10 +6,18 @@ import java.util.List;
 
 import jp.pgtest_autumn.constant.MessageConstant;
 
+/**
+ * ホームアプリクラス。(修正不要)
+ * <p>
+ * ホームアプリ起動時の処理を記述するためのクラス。
+ * </p>
+ *
+ * @author SYS Takahiro Mitsuoka
+ */
 public class Home extends ApplicationBase {
 
 	/**
-	 * アプリ起動時処理。
+	 * アプリ起動時処理。(修正不要)
 	 * <p>
 	 * 以下の処理を行う。<br>
 	 *   ・起動時メッセージをメッセージリストに追加する。<br>
@@ -24,7 +32,7 @@ public class Home extends ApplicationBase {
 	}
 
 	/**
-	 * 音量UPボタン押下時処理。
+	 * 音量UPボタン押下時処理。(修正不要)
 	 * <p>
 	 * 以下の処理を行う。<br>
 	 *   ・メッセージ"音量を上げました。"をメッセージリストに追加し、返却する。<br>
@@ -38,7 +46,7 @@ public class Home extends ApplicationBase {
 	}
 
 	/**
-	 * 音量DOWNボタン押下時処理。
+	 * 音量DOWNボタン押下時処理。(修正不要)
 	 * <p>
 	 * 以下の処理を行う。<br>
 	 *   ・メッセージ"音量を下げました。"をメッセージリストに追加し、返却する。<br>

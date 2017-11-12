@@ -16,14 +16,14 @@ public class PhotoListManager {
 	private List<Photo> photoList;
 
 	/**
-	 * コンストラクタ。
+	 * コンストラクタ。(修正不要)
 	 */
 	public PhotoListManager() {
 		photoList = new ArrayList<>();
 	}
 
 	/**
-	 * 写真追加メソッド。
+	 * 写真追加メソッド。(修正不要)
 	 * <p>
 	 * 写真リストに引数に受け取った写真オブジェクトを追加する。
 	 * </p>
@@ -34,7 +34,7 @@ public class PhotoListManager {
 	}
 
 	/**
-	 * 写真リスト取得メソッド。
+	 * 写真リスト取得メソッド。(修正不要)
 	 *
 	 * @return 写真リスト
 	 */
@@ -43,7 +43,7 @@ public class PhotoListManager {
 	}
 
 	/**
-	 * 写真0枚判定メソッド。
+	 * 写真0枚判定メソッド。(修正不要)
 	 *
 	 * @return true(写真リストが空)、false(写真リストのサイズが1以上)
 	 */

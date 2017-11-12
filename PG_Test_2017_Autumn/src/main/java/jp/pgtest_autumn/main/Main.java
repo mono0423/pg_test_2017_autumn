@@ -5,7 +5,7 @@ import java.util.Scanner;
 import jp.pgtest_autumn.controller.PhoneController;
 
 /**
- * 実行クラス。(※修正不要)
+ * 実行クラス。(修正不要)
  *
  * @author SYS Takahiro Mitsuoka
  */
@@ -15,7 +15,7 @@ public class Main {
 	private static Scanner scanner = new Scanner(System.in);
 
 	/**
-	 * メインメソッド。(※修正不要)
+	 * メインメソッド。(修正不要)
 	 *
 	 * @param args コマンドライン引数
 	 */

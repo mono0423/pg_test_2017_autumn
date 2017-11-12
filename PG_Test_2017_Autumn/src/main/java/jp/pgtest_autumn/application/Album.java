@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import jp.pgtest_autumn.bean.Photo;
 import jp.pgtest_autumn.constant.MessageConstant;
 import jp.pgtest_autumn.model.PhotoListManager;
+import jp.pgtest_autumn.model.bean.Photo;
 
 /**
  * アルバムアプリクラス。

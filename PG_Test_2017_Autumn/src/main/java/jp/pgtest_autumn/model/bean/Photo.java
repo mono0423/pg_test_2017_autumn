@@ -1,4 +1,4 @@
-package jp.pgtest_autumn.bean;
+package jp.pgtest_autumn.model.bean;
 
 /**
  * 写真クラス。(修正不要)

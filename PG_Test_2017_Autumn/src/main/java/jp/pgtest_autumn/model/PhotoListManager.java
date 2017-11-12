@@ -3,7 +3,7 @@ package jp.pgtest_autumn.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.pgtest_autumn.bean.Photo;
+import jp.pgtest_autumn.model.bean.Photo;
 
 /**
  * 写真リスト管理クラス。(修正不要)

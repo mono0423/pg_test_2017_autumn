@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import jp.pgtest_autumn.bean.Photo;
 import jp.pgtest_autumn.constant.MessageConstant;
 import jp.pgtest_autumn.model.PhotoListManager;
+import jp.pgtest_autumn.model.bean.Photo;
 
 /**
  * カメラアプリクラス。

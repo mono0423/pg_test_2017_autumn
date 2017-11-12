@@ -34,7 +34,7 @@ public class Album extends ApplicationBase {
 	}
 
 	/**
-	 * アプリ起動時処理。
+	 * アルバムアプリ起動時処理。(修正不要)
 	 * <p>
 	 * 以下の処理を行う。<br>
 	 *   ・起動時メッセージをメッセージリストに追加する。<br>
@@ -100,7 +100,7 @@ public class Album extends ApplicationBase {
 	 * <p>
 	 * 写真リストの中で、最新10枚の写真を返却する。<br>
 	 * </p>
-	 * @return
+	 * @return 写真リスト(最新10枚)
 	 */
 	private List<Photo> fetchLatest10Photo() {
 

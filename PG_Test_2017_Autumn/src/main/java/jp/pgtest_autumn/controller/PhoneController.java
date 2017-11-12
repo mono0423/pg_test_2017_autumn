@@ -1,13 +1,9 @@
 package jp.pgtest_autumn.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import jp.pgtest_autumn.application.ApplicationBase;
-import jp.pgtest_autumn.application.Home;
 import jp.pgtest_autumn.constant.ButtonNameConstant;
-import jp.pgtest_autumn.constant.MessageConstant;
 import jp.pgtest_autumn.factory.ApplicationFactory;
 
 /**
@@ -53,36 +49,16 @@ public class PhoneController {
 	 */
 	public List<String> exe(String input) {
 
-		List<String> messageList;
+		List<String> messageList = null;
+		/*===========↑は編集しないでください。====================================*/
 
-		/* ホームアプリ以外からのアプリ切り替え防止 */
-		if (!(currentApp instanceof Home)
-				&& (ButtonNameConstant.CAMERA.equals(input) || ButtonNameConstant.ALBUM.equals(input))) {
-			messageList = new ArrayList<>(Arrays.asList(MessageConstant.ILLAGAL_APP_CHANGE_MSG));
 
-		/* アプリ切り替え時 */
-		} else 	if (ButtonNameConstant.HOME.equals(input)
-						|| ButtonNameConstant.CAMERA.equals(input)
-						|| ButtonNameConstant.ALBUM.equals(input)) {
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
 
-			/* ボタン時応じたアプリを起動する */
-			currentApp = ApplicationFactory.getInstance(input);
-			messageList = currentApp.launch();
 
-		/* 音量UPボタン押下時 */
-		} else if (ButtonNameConstant.UP.equals(input)) {
-			messageList = currentApp.putVolumeUp();
-
-		/* 音量Downボタン押下時 */
-		} else if (ButtonNameConstant.DOWN.equals(input)) {
-			messageList = currentApp.putVolumeDown();
-
-		/* ボタン名が不正な場合 */
-		} else {
-			messageList = new ArrayList<>(Arrays.asList(MessageConstant.ILLAGAL_BUTTON_NAME_MSG));
-			messageList.addAll(currentApp.launch());
-		}
-
+		/*===========↓は編集しないでください。====================================*/
 		/* メッセージを出力する */
 		for (String message : messageList) {
 			System.out.println("【" + currentApp.fetchApplicationName() + "】" + message);

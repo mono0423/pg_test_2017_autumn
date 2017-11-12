@@ -3,9 +3,7 @@ package jp.pgtest_autumn.application;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import jp.pgtest_autumn.constant.MessageConstant;
 import jp.pgtest_autumn.model.PhotoListManager;
 import jp.pgtest_autumn.model.bean.Photo;
 
@@ -30,7 +28,10 @@ public class Album extends ApplicationBase {
 	 * @param photoListManager 写真リスト
 	 */
 	public Album(PhotoListManager photoListManager) {
-		this.photoListManager = photoListManager;
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
+
 	}
 
 	/**
@@ -78,7 +79,10 @@ public class Album extends ApplicationBase {
 	 */
 	@Override
 	public List<String> putVolumeUp() {
-		return new ArrayList<String>(Arrays.asList(MessageConstant.VOLUME_UP_MSG));
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
+		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
 	}
 
 	/**
@@ -92,7 +96,10 @@ public class Album extends ApplicationBase {
 	 */
 	@Override
 	public List<String> putVolumeDown() {
-		return new ArrayList<String>(Arrays.asList(MessageConstant.VOLUME_DOWN_MSG));
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
+		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
 	}
 
 	/**
@@ -103,28 +110,10 @@ public class Album extends ApplicationBase {
 	 * @return 写真リスト(最新10枚)
 	 */
 	private List<Photo> fetchLatest10Photo() {
-
-		if (photoListManager.getPhotoList().size() == 0) {
-			return photoListManager.getPhotoList();
-		}
-
-//		/* Java7 */
-//		List<Photo> reverseList = new ArrayList<>(photoListManager.getPhotoList());
-//		Collections.reverse(reverseList);
-//
-//		List<Photo> returnList = new ArrayList<>();
-//		for (int i = 0; i < 10 && i < reverseList.size(); i++) {
-//			returnList.add(reverseList.get(i));
-//		}
-//
-//		return returnList;
-
-		/* Java8 */
-		return photoListManager.getPhotoList()
-						 .stream()
-						 .limit(10)
-						 .sorted((p1, p2) -> p2.getFileName().compareTo(p1.getFileName()))
-						 .collect(Collectors.toList());
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
+		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
 	}
 
 	/**

@@ -1,10 +1,6 @@
 package jp.pgtest_autumn.factory;
 
-import jp.pgtest_autumn.application.Album;
 import jp.pgtest_autumn.application.ApplicationBase;
-import jp.pgtest_autumn.application.Camera;
-import jp.pgtest_autumn.application.Home;
-import jp.pgtest_autumn.constant.MessageConstant;
 import jp.pgtest_autumn.model.PhotoListManager;
 
 /**
@@ -53,22 +49,9 @@ public class ApplicationFactory {
 	 */
 	public static ApplicationBase getInstance(String app) {
 
-		switch (app) {
-		case "home":
-			home = home == null ? new Home() : home;
-			return home;
-
-		case "camera":
-			camera = camera == null ? new Camera(photoListManager) : camera;
-			return camera;
-
-		case "album":
-			album = album == null ? new Album(photoListManager) : album;
-			return album;
-
-		/* 不正なアプリ名が渡された場合、例外をスローする */
-		default:
-			throw new IllegalArgumentException(MessageConstant.ILLAGAL_APP_NAME_MSG);
-		}
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
+		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
 	}
 }

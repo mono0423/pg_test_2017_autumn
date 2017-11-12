@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import jp.pgtest_autumn.constant.MessageConstant;
 import jp.pgtest_autumn.model.PhotoListManager;
 import jp.pgtest_autumn.model.bean.Photo;
 
@@ -31,7 +30,9 @@ public class Camera extends ApplicationBase {
 	 * @param photoListManager 写真リスト
 	 */
 	public Camera(PhotoListManager photoListManager) {
-		this.photoListManager = photoListManager;
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
 	}
 
 	/**
@@ -57,11 +58,10 @@ public class Camera extends ApplicationBase {
 	 */
 	@Override
 	public List<String> putVolumeUp() {
-
-		Photo photo = shot();
-		return new ArrayList<String>(
-						Arrays.asList(MessageConstant.CAMERA_SHOT_MSG,
-									  photo.getFileNameWithExtension()));
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
+		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
 	}
 
 	/**
@@ -79,10 +79,10 @@ public class Camera extends ApplicationBase {
 	@Override
 	public List<String> putVolumeDown() {
 
-		Photo photo = shot();
-		return new ArrayList<String>(
-				Arrays.asList(MessageConstant.CAMERA_SHOT_MSG,
-							  photo.getFileNameWithExtension()));
+		/*===============================================*/
+		/*           解答を記述してください。            */
+		/*===============================================*/
+		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
 	}
 
 	/**

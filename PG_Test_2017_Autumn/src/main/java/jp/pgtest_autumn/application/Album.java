@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import jp.pgtest_autumn.constant.MessageConstant;
 import jp.pgtest_autumn.model.PhotoListManager;
 import jp.pgtest_autumn.model.bean.Photo;
 
@@ -69,7 +70,7 @@ public class Album extends ApplicationBase {
 	}
 
 	/**
-	 * 音量UPボタン押下時処理。
+	 * 音量UPボタン押下時処理。(修正不要)
 	 * <p>
 	 * 以下の処理を行う。<br>
 	 *   ・メッセージ"音量を上げました。"をメッセージリストに追加し、返却する。<br>
@@ -79,14 +80,11 @@ public class Album extends ApplicationBase {
 	 */
 	@Override
 	public List<String> putVolumeUp() {
-		/*===============================================*/
-		/*           解答を記述してください。            */
-		/*===============================================*/
-		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
+		return new ArrayList<String>(Arrays.asList(MessageConstant.VOLUME_UP_MSG));
 	}
 
 	/**
-	 * 音量DOWNボタン押下時処理。
+	 * 音量DOWNボタン押下時処理。(修正不要)
 	 * <p>
 	 * 以下の処理を行う。<br>
 	 *   ・メッセージ"音量を下げました。"をメッセージリストに追加し、返却する。<br>
@@ -96,10 +94,7 @@ public class Album extends ApplicationBase {
 	 */
 	@Override
 	public List<String> putVolumeDown() {
-		/*===============================================*/
-		/*           解答を記述してください。            */
-		/*===============================================*/
-		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
+		return new ArrayList<String>(Arrays.asList(MessageConstant.VOLUME_DOWN_MSG));
 	}
 
 	/**

@@ -98,7 +98,7 @@ public class Camera extends ApplicationBase {
 	 */
 	private Photo shot() {
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_hhmmss");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
 
 		String fileName = simpleDateFormat.format(calendar.getTime());
 		Photo photo = new Photo(fileName);

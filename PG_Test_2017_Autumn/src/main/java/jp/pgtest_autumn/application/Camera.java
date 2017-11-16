@@ -68,7 +68,7 @@ public class Camera extends ApplicationBase {
 	 * 音量DOWNボタン押下時処理。
 	 * <p>
 	 * 以下の処理を行う。<br>
-	 *   ・写真を撮影する。<br>
+	 *   ・写真を撮影する。(Cameraクラスのshotメソッドを実行)<br>
 	 *   ・メッセージ"写真を撮りました。"をメッセージリストに追加する。<br>
 	 *   ・撮影した写真のファイル名をメッセージリストに追加する。<br>
 	 *   ・メッセージリストを返却する。<br>
@@ -83,28 +83,6 @@ public class Camera extends ApplicationBase {
 		/*           解答を記述してください。            */
 		/*===============================================*/
 		return null;/* ←コンパイルエラー回避のため。回答時は削除してください。 */
-	}
-
-	/**
-	 * 撮影メソッド。(修正不要)
-	 * <p>
-	 * 以下の処理を行う。
-	 *   ・現時刻を取得する。
-	 *   ・現時刻をファイル名とした写真オブジェクトを生成する。
-	 *   ・写真リストに追加する。
-	 *   ・写真オブジェクトを返却する。
-	 * </p>
-	 * @return 写真
-	 */
-	private Photo shot() {
-		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_hhmmss");
-
-		String fileName = simpleDateFormat.format(calendar.getTime());
-		Photo photo = new Photo(fileName);
-		photoListManager.add(photo);
-
-		return photo;
 	}
 
 	/**
@@ -129,5 +107,27 @@ public class Camera extends ApplicationBase {
 	@Override
 	public String fetchApplicationName() {
 		return "カメラ  ";
+	}
+
+	/**
+	 * 撮影メソッド。(修正不要)
+	 * <p>
+	 * 以下の処理を行う。
+	 *   ・現時刻を取得する。
+	 *   ・現時刻をファイル名とした写真オブジェクトを生成する。
+	 *   ・写真リストに追加する。
+	 *   ・写真オブジェクトを返却する。
+	 * </p>
+	 * @return 写真
+	 */
+	private Photo shot() {
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+
+		String fileName = simpleDateFormat.format(calendar.getTime());
+		Photo photo = new Photo(fileName);
+		photoListManager.add(photo);
+
+		return photo;
 	}
 }

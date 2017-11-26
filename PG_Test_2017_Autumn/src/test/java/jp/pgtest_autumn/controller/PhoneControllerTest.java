@@ -83,7 +83,7 @@ public class PhoneControllerTest {
 
 	@AfterClass
 	public static void score() {
-		System.out.println("【Camera】  " + score + "/30点");
+		System.out.println("【PhoneController】  " + score + "/30点");
 		System.out.println("正解  ：" + correctList);
 		System.out.println("不正解：" + incorrectList);
 	}

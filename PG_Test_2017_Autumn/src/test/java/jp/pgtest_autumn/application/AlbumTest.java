@@ -2,6 +2,7 @@ package jp.pgtest_autumn.application;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,15 +10,12 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
+import jp.pgtest_autumn.AllTests;
 import jp.pgtest_autumn.model.PhotoListManager;
 import jp.pgtest_autumn.model.bean.Photo;
 
 public class AlbumTest {
 
-	private Album target;
-	private PhotoListManager manager;
-
-	private static int score = 0;
 
 	private static List<String> correctList;
 
@@ -30,8 +28,6 @@ public class AlbumTest {
 
 	@Before
 	public void before() {
-		manager = new PhotoListManager();
-		target = new Album(manager);
 	}
 
 	@Test
@@ -50,7 +46,7 @@ public class AlbumTest {
 //		PhotoListManager actual = (PhotoListManager) f.get(album);
 //		if (actual == expected) {
 //			correctList.add(new Object() {}.getClass().getEnclosingMethod().getName());
-//			score += 2;
+//			albumScore += 2;
 //			return;
 //		}
 //
@@ -58,29 +54,99 @@ public class AlbumTest {
 //		fail();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
-	public void 写真リスト_ソート_0010() throws Exception {
+	public void 写真リスト_ソート確認_日付_0010() throws Exception {
 
-		List<Photo> expected = new ArrayList<>();
-		expected.add(new Photo("20170101_000000.png"));
-		expected.add(new Photo("20170301_000000.png"));
-		expected.add(new Photo("20170201_000000.png"));
+		PhotoListManager input = new PhotoListManager();
+		input.add(new Photo("20170101_000000.png"));
+		input.add(new Photo("20170301_000000.png"));
+		input.add(new Photo("20170201_000000.png"));
 
 		/* ソートメソッドをリフレクションで実行 */
+		Album album = new Album(input);
+		Method method = Album.class.getDeclaredMethod("fetchLatest10Photo");
+		method.setAccessible(true);
+		List<Photo> actualList = (List<Photo>) method.invoke(album);
 
-//		if (actual == expected) {
-//			correctList.add(new Object() {}.getClass().getEnclosingMethod().getName());
-//			score += 2;
-//			return;
-//		}
+		List<Photo> expectedList = new ArrayList<>();
+		expectedList.add(new Photo("20170301_000000.png"));
+		expectedList.add(new Photo("20170201_000000.png"));
+		expectedList.add(new Photo("20170101_000000.png"));
 
-		incorrectList.add(new Object() {}.getClass().getEnclosingMethod().getName());
-		fail();
+		if (actualList.size() != expectedList.size()) {
+			incorrectList.add(new Object() {}.getClass().getEnclosingMethod().getName());
+			fail();
+		}
+
+		/*
+		 * 実際の写真リストと期待する写真リストが全て一致するか調べる
+		 * 一致しなければ、失敗
+		 */
+		for (int i = 0; i < actualList.size(); i++) {
+			String actualPhotoName = actualList.get(i).getFileName();
+			String expectedPhotoName = expectedList.get(i).getFileName();
+
+			if (!actualPhotoName.equals(expectedPhotoName)) {
+				incorrectList.add(new Object() {}.getClass().getEnclosingMethod().getName());
+				fail();
+			}
+		}
+
+		/* 全て一致すれば成功 */
+		correctList.add(new Object() {}.getClass().getEnclosingMethod().getName());
+		AllTests.albumScore += 2;
+		return;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void 写真リスト_ソート確認_時刻_0010() throws Exception {
+
+		PhotoListManager input = new PhotoListManager();
+		input.add(new Photo("20170101_100000.png"));
+		input.add(new Photo("20170101_300000.png"));
+		input.add(new Photo("20170101_200000.png"));
+
+		/* ソートメソッドをリフレクションで実行 */
+		Album album = new Album(input);
+		Method method = Album.class.getDeclaredMethod("fetchLatest10Photo");
+		method.setAccessible(true);
+		List<Photo> actualList = (List<Photo>) method.invoke(album);
+
+		List<Photo> expectedList = new ArrayList<>();
+		expectedList.add(new Photo("20170101_300000.png"));
+		expectedList.add(new Photo("20170101_200000.png"));
+		expectedList.add(new Photo("20170101_100000.png"));
+
+		if (actualList.size() != expectedList.size()) {
+			incorrectList.add(new Object() {}.getClass().getEnclosingMethod().getName());
+			fail();
+		}
+
+		/*
+		 * 実際の写真リストと期待する写真リストが全て一致するか調べる
+		 * 一致しなければ、失敗
+		 */
+		for (int i = 0; i < actualList.size(); i++) {
+			String actualPhotoName = actualList.get(i).getFileName();
+			String expectedPhotoName = expectedList.get(i).getFileName();
+
+			if (!actualPhotoName.equals(expectedPhotoName)) {
+				incorrectList.add(new Object() {}.getClass().getEnclosingMethod().getName());
+				fail();
+			}
+		}
+
+		/* 全て一致すれば成功 */
+		correctList.add(new Object() {}.getClass().getEnclosingMethod().getName());
+		AllTests.albumScore += 2;
+		return;
 	}
 
 	@AfterClass
-	public static void score() {
-		System.out.println("【Album】  " + score + "/30点");
+	public static void albumScore() {
+		System.out.println("【Album】  " + AllTests.albumScore + "/30点");
 		System.out.println("正解  ：" + correctList);
 		System.out.println("不正解：" + incorrectList);
 	}

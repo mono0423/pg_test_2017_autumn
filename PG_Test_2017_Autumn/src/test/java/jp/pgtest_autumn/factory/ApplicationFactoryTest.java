@@ -2,6 +2,7 @@ package jp.pgtest_autumn.factory;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import jp.pgtest_autumn.application.ApplicationBase;
 import jp.pgtest_autumn.application.Camera;
 import jp.pgtest_autumn.application.Home;
 import jp.pgtest_autumn.constant.MessageConstant;
+import jp.pgtest_autumn.model.PhotoListManager;
 
 public class ApplicationFactoryTest {
 
@@ -121,7 +123,32 @@ public class ApplicationFactoryTest {
 	}
 
 	@Test
-	public void 不正入力_0040() {
+	public void 写真リストマネージャ確認_0031() throws Exception {
+
+		ApplicationBase album = ApplicationFactory.getInstance("album");
+		ApplicationBase camera = ApplicationFactory.getInstance("camera");
+
+		/* リフレクションでprivateフィールドにアクセスする */
+		Field camraField = Camera.class.getDeclaredField("photoListManager");
+		camraField.setAccessible(true);
+		PhotoListManager cameraManager = (PhotoListManager) camraField.get(camera);
+
+		Field albumField = Album.class.getDeclaredField("photoListManager");
+		albumField.setAccessible(true);
+		PhotoListManager albumManager = (PhotoListManager) albumField.get(album);
+
+		if (cameraManager == albumManager) {
+			correctList.add(new Object() {}.getClass().getEnclosingMethod().getName());
+			score += 5;
+			return;
+		}
+
+		incorrectList.add(new Object() {}.getClass().getEnclosingMethod().getName());
+		fail();
+	}
+
+	@Test
+	public void 不正入力_入力a_0040() {
 
 		try {
 			ApplicationBase app = ApplicationFactory.getInstance("a");
@@ -139,10 +166,10 @@ public class ApplicationFactoryTest {
 	}
 
 	@Test
-	public void 不正入力_0041() {
+	public void 不正入力_空文字_0041() {
 
 		try {
-			ApplicationBase app = ApplicationFactory.getInstance(null);
+			ApplicationBase app = ApplicationFactory.getInstance("");
 
 		} catch(IllegalArgumentException e) {
 			if (MessageConstant.ILLAGAL_APP_NAME_MSG.equals(e.getMessage())) {
@@ -159,7 +186,7 @@ public class ApplicationFactoryTest {
 	@AfterClass
 	public static void score() {
 		System.out.println("【ApplicationFactory】  " + score + "/30点");
-		System.out.println("正解  ：" + correctList);
-		System.out.println("不正解：" + incorrectList);
+		System.out.println("  正解  ：" + correctList);
+		System.out.println("  不正解：" + incorrectList);
 	}
 }

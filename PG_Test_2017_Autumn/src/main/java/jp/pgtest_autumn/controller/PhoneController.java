@@ -80,7 +80,6 @@ public class PhoneController {
 		/* ボタン名が不正な場合 */
 		} else {
 			messageList = new ArrayList<>(Arrays.asList(MessageConstant.ILLAGAL_BUTTON_NAME_MSG));
-			messageList.addAll(currentApp.launch());
 		}
 
 		/* メッセージを出力する */

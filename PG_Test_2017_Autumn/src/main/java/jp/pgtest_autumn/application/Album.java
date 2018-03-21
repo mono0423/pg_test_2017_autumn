@@ -96,38 +96,6 @@ public class Album extends ApplicationBase {
 	}
 
 	/**
-	 * 写真取得メソッド。
-	 * <p>
-	 * 写真リストの中で、最新10枚の写真を返却する。<br>
-	 * </p>
-	 * @return 写真リスト(最新10枚)
-	 */
-	private List<Photo> fetchLatest10Photo() {
-
-		if (photoListManager.getPhotoList().size() == 0) {
-			return photoListManager.getPhotoList();
-		}
-
-//		/* Java7 */
-//		List<Photo> reverseList = new ArrayList<>(photoListManager.getPhotoList());
-//		Collections.reverse(reverseList);
-//
-//		List<Photo> returnList = new ArrayList<>();
-//		for (int i = 0; i < 10 && i < reverseList.size(); i++) {
-//			returnList.add(reverseList.get(i));
-//		}
-//
-//		return returnList;
-
-		/* Java8 */
-		return photoListManager.getPhotoList()
-						 .stream()
-						 .limit(10)
-						 .sorted((p1, p2) -> p2.getFileName().compareTo(p1.getFileName()))
-						 .collect(Collectors.toList());
-	}
-
-	/**
 	 * 起動中アプリ表示メソッド。(修正不要)
 	 *
 	 * @return メッセージ
@@ -149,5 +117,37 @@ public class Album extends ApplicationBase {
 	@Override
 	public String fetchApplicationName() {
 		return "アルバム";
+	}
+
+	/**
+	 * 写真取得メソッド。
+	 * <p>
+	 * 写真リストの中で、最新10枚の写真を返却する。<br>
+	 * </p>
+	 * @return 写真リスト(最新10枚)
+	 */
+	private List<Photo> fetchLatest10Photo() {
+
+//		/* Java7 */
+//		List<Photo> sortedList = new ArrayList<>(photoListManager.getPhotoList());
+//		Collections.sort(sortedList, new Comparator<Photo>() {
+//			public int compare(Photo p1, Photo p2) {
+//				return p2.getFileName().compareTo(p1.getFileName());
+//			}
+//		});
+//
+//		List<Photo> returnList = new ArrayList<>();
+//		for (int i = 0; i < 10 && i < sortedList.size(); i++) {
+//			returnList.add(sortedList.get(i));
+//		}
+//
+//		return returnList;
+
+		/* Java8 */
+		return photoListManager.getPhotoList()
+						 .stream()
+						 .limit(10)
+						 .sorted((p1, p2) -> p2.getFileName().compareTo(p1.getFileName()))
+						 .collect(Collectors.toList());
 	}
 }
